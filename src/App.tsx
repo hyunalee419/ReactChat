@@ -1,4 +1,8 @@
 import * as React from 'react';
-import './App.scss';
+import styled from 'styled-components';
 
-export default () => <div>hello</div>;
+const Temp = styled.div`
+    font-size: 100px;
+`;
+
+export default () => <Temp>hello22222222</Temp>;

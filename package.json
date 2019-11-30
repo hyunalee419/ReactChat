@@ -1,11 +1,12 @@
 {
-  "name": "webpack-react-ie-polyfill",
+  "name": "ReactChat",
   "version": "1.0.0",
-  "description": "This repository is for testing React IE polyfill.",
+  "description": "This repository is React Chat.",
   "scripts": {
     "build": "webpack --mode=production",
     "watch": "webpack --mode=development --watch",
-    "start": "npm run watch"
+    "server": "babel-node server",
+    "start": "npm run watch & npm run server"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,7 @@
   "homepage": "https://github.com/hyunalee419/webpack-IE-polyfill#readme",
   "dependencies": {
     "@babel/core": "7.4.4",
+    "@babel/node": "7.7.4",
     "@babel/polyfill": "7.4.4",
     "@babel/preset-env": "7.4.4",
     "@babel/preset-react": "7.0.0",
@@ -21,6 +23,7 @@
     "@types/react-loadable": "5.5.1",
     "babel-loader": "8.0.5",
     "css-loader": "2.1.1",
+    "express": "4.17.1",
     "node-sass": "4.12.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",

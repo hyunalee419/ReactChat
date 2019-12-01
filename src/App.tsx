@@ -1,8 +1,12 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { BrowserRouter, Route } from 'react-router-dom';
+import List from 'pages/List';
+import Room from 'pages/Room';
 
-const Temp = styled.div`
-    font-size: 100px;
-`;
 
-export default () => <Temp>hello22222222</Temp>;
+export default () => (
+  <BrowserRouter>
+    <Route exact path="/list" component={List} />
+    <Route exact path="/room" component={Room} />
+  </BrowserRouter>
+);

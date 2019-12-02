@@ -1,13 +1,19 @@
 import * as React from 'react';
+import * as moment from 'moment';
 import styled from 'styled-components';
 import ChatListItem from 'components/ChatListItem';
 
-export default () => (
+export default ({
+  messages
+}: {
+	messages: {
+		id: number, message: string, dateTime: moment.Moment, send?: boolean
+	}[]
+}) => (
 	<Ul>
-		<ChatListItem>출근했니?</ChatListItem>
-		<ChatListItem>출근했냐구?</ChatListItem>
-		<ChatListItem>어딘데 출근안하니, 죽고싶니?</ChatListItem>
-		<ChatListItem send>해외 출장중입니다.</ChatListItem>
+		{ messages && messages.map(({ id, message, send }) => (
+			<ChatListItem key={`chatListItem-${id}`} send={send}>{message}</ChatListItem>
+		))}
 	</Ul>
 );
 

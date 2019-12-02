@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import ImgButton from 'components/common/ImgButton';
 
 const StyledDiv = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
   width: 100%;
   height: 44px;
   background-color: var(--color-purple);

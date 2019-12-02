@@ -5,6 +5,8 @@ import RoomList from 'containers/list/RoomList';
 export default () => (
   <>
     <Header title="채팅" />
-    <RoomList/>
+    <div style={{ paddingTop: 44 }}>
+      <RoomList/>
+    </div>
   </>
 );

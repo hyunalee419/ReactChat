@@ -1,28 +1,37 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import * as moment from 'moment';
 import styled from 'styled-components';
 
 export default ({
-  username, profile, lastMessage, lastMessageDateTime, unreadCount
+  id, username, profile, lastMessage, lastMessageDateTime, unreadCount
 }: {
+	id: number,
 	username: string,
 	profile: string,
 	lastMessage: string,
 	lastMessageDateTime: string,
 	unreadCount?: number
 }) => (
-	<li style={{ display: 'flex', padding: '9px 16px' }}>
-		<ProfileImg src={profile} alt={`profile-${username}`} />
-		<Content>
-			{username}
-			<p>{lastMessage}</p>
-		</Content>
-		<div style={{ position: 'relative', paddingTop: 7 }}>
-			<LastMessageDateTime value={lastMessageDateTime} />
-			{unreadCount && <UnreadCount>{unreadCount}</UnreadCount>}
-		</div>
-	</li>
+	<Link to={`/room/${id}`} style={{ textDecoration: 'none' }}>
+		<Li>
+			<ProfileImg src={profile} alt={`profile-${username}`} />
+			<Content>
+				{username}
+				<p>{lastMessage}</p>
+			</Content>
+			<div style={{ position: 'relative', paddingTop: 7 }}>
+				<LastMessageDateTime value={lastMessageDateTime} />
+				{unreadCount && <UnreadCount>{unreadCount}</UnreadCount>}
+			</div>
+		</Li>
+	</Link>
 );
+
+const Li = styled.li`
+	padding: 9px 16px;
+	display: flex;
+`;
 
 const LastMessageDateTime = ({ value }) => {
 	const today = moment()

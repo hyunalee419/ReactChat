@@ -45,8 +45,9 @@ const ProfileImg = styled.img`
 `;
 
 const Content = styled.div`
-	padding: 9px 15px;
-	flex: 1;
+  padding: 9px 15px;
+  flex: 1;
+  width: calc(100% - 117px);
   font-size: 16px;
   font-weight: bold;
   letter-spacing: -0.2px;
@@ -57,7 +58,6 @@ const Content = styled.div`
     letter-spacing: -0.1px;
     font-weight: initial;
     color: var(--color-grey);
-    width: 90%;
     overflow:hidden;
 		text-overflow:ellipsis;
 		white-space:nowrap;

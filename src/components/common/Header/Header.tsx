@@ -8,10 +8,7 @@ export default ({
   right=undefined
 }) => (
   <StyledDiv>
-    <ImgButton
-      buttonProps={{ style: { float: 'left', padding: '12px 0 0 10px' } }}
-      imgProps={{ src: '/menu@3x.png', style: { width: 24, height: 24 } }}
-    />
+    {left}
     {title}
     <ImgButton
       buttonProps={{ style: { float: 'right', padding: '10px 12px' } }}

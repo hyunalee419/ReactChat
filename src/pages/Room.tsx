@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Header from 'components/common/Header';
+import ImgButton from 'components/common/ImgButton';
 import ChatList from 'containers/room/ChatList';
 import MessageContainer from 'containers/room/MessageContainer';
 import RoomMock from '../../samples/room.js';
@@ -21,7 +22,17 @@ export default ({
   if ( !roomData ) return null;
   return (
     <>
-      <Header title={roomData.username} />
+      <Header
+        title={roomData.username}
+        left={(
+          <ImgButton
+            buttonProps={{
+              style: { float: 'left', padding: '12px 0 0 10px' }
+            }}
+            imgProps={{ src: '/img-back@3x.png', style: { width: 24, height: 24 } }}
+          />
+        )}
+      />
       <Div>
         { roomData.messages && <ChatList messages={roomData.messages} /> }
         <MessageContainer/>

@@ -7,6 +7,7 @@ import MessageContainer from 'containers/room/MessageContainer';
 import RoomMock from '../../samples/room.js';
 
 export default ({
+  history,
   match: { params: { id }}
 }) => {
   const [ roomData, setRoomData ] = React.useState(null);
@@ -19,6 +20,8 @@ export default ({
     setRoomData(RoomMock[id]);
   });
 
+  const GoBack = React.useCallback(() => history.goBack(), [history]);
+
   if ( !roomData ) return null;
   return (
     <>
@@ -27,6 +30,7 @@ export default ({
         left={(
           <ImgButton
             buttonProps={{
+              onClick: GoBack,
               style: { float: 'left', padding: '12px 0 0 10px' }
             }}
             imgProps={{ src: '/img-back@3x.png', style: { width: 24, height: 24 } }}

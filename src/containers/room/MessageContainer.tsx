@@ -3,10 +3,18 @@ import styled from 'styled-components';
 import Input from 'components/common/Input';
 import ImgButton from 'components/common/ImgButton';
 
-export default () => {
+export default ({
+	onSubmit
+}: {
+	onSubmit: (e: React.FormEvent) => void;
+}) => {
 	return (
-		<Form>
-			<Input placeholder="메시지를 입력해주세요.." style={{ width: 'calc(100% - 94px)' }} />
+		<Form onSubmit={onSubmit}>
+			<Input
+				name="message"
+				placeholder="메시지를 입력해주세요.."
+				style={{ width: 'calc(100% - 94px)' }}
+			/>
 			<ImgButton
 				buttonProps={{
 					type: 'submit',

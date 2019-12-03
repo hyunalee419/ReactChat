@@ -10,27 +10,39 @@ export default ({
   history,
   match: { params: { id }}
 }) => {
-  const [ roomData, setRoomData ] = React.useState(null);
+  const [ title, setTitle ] = React.useState(null);
+  const [ messages, setMessages ] = React.useState(null);
 
   const isFirst = React.useRef(true);
   React.useEffect(() => {
     if (!isFirst.current) return;
     isFirst.current = false;
 
-    setRoomData(RoomMock[id]);
+    setTitle(RoomMock[id].username);
+    setMessages(RoomMock[id].messages);
   });
 
-  const GoBack = React.useCallback(() => history.goBack(), [history]);
+  const goBack = React.useCallback(() => history.goBack(), [history]);
 
-  if ( !roomData ) return null;
+  const handleSendMessage = React.useCallback((e) => {
+    e.preventDefault();
+
+    const { message } = e.target;
+    setMessages([
+      ...messages,
+      { id: messages.length, message: message.value, send: true }
+    ]);
+  }, undefined);
+
+  if ( !messages ) return null;
   return (
     <>
       <Header
-        title={roomData.username}
+        title={title}
         left={(
           <ImgButton
             buttonProps={{
-              onClick: GoBack,
+              onClick: goBack,
               style: { float: 'left', padding: '12px 0 0 10px' }
             }}
             imgProps={{ src: '/img-back@3x.png', style: { width: 24, height: 24 } }}
@@ -38,8 +50,10 @@ export default ({
         )}
       />
       <Div>
-        { roomData.messages && <ChatList messages={roomData.messages} /> }
-        <MessageContainer/>
+        { messages && <ChatList messages={messages} /> }
+        <MessageContainer
+          onSubmit={handleSendMessage}
+        />
       </Div>
     </>
   );

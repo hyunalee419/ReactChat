@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import UploadImageList from 'components/UploadImageList';
 import Header from 'components/common/Header';
 import ImgButton from 'components/common/ImgButton';
 import ChatList from 'containers/room/ChatList';
@@ -12,6 +13,7 @@ export default ({
 }) => {
   const [ title, setTitle ] = React.useState(null);
   const [ messages, setMessages ] = React.useState(null);
+  const [ images, setImages ] = React.useState(null);
 
   const isFirst = React.useRef(true);
   React.useEffect(() => {
@@ -31,6 +33,7 @@ export default ({
         ...messages,
         { id: messages.length, image: this.result, send: true }
       ]);
+      setImages(images ? [...images, this.result] : [this.result]);
     };
     reader.readAsDataURL(files[0]);
   }, undefined);
@@ -69,7 +72,8 @@ export default ({
           </div>
         )}
       />
-      <Div>
+      { images && <UploadImageList images={images} /> }
+      <Div className={ images ? 'upload-image' : ''}>
         { messages && <ChatList messages={messages} /> }
         <MessageContainer
           onSubmit={handleSendMessage}
@@ -92,4 +96,9 @@ const Div = styled.div`
   padding: 64px 16px 20px;
   height: calc(100% - 84px);
   background-color: #f9f9fb;
+  
+  &.upload-image {
+    padding-top: 128px;
+    height: calc(100% - 148px);
+  }
 `;

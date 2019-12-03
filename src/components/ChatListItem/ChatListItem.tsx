@@ -3,15 +3,33 @@ import styled from 'styled-components';
 
 export default ({
   children,
+	image = false,
 	send = false
 }: {
-	children: React.ReactNode,
+	children: any,
+	image?: boolean,
 	send?: boolean
 }) => (
-	<Li className={send ? 'send-message' : ''}><Text>{children}</Text></Li>
+	<Li className={send ? 'send-message' : ''}>
+		{ image ? (
+			<img src={children} />
+		) : (
+			<Text>{children}</Text>
+		)}
+	</Li>
 );
 
 const Li = styled.li`
+	padding: 5px 0;
+	
+	img {
+	  width: 200px;
+		height: 200px;
+		border-radius: 12px;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+		background-color: #47909b;
+	}
+    
   &.send-message {
     text-align: right;
     
@@ -24,7 +42,6 @@ const Li = styled.li`
 `;
 
 const Text = styled.div`
-  margin: 5px 0;
   display: inline-block;
   padding: 12px;
 	border-radius: 12px;

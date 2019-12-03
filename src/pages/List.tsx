@@ -13,6 +13,12 @@ export default () => (
           imgProps={{ src: '/menu@3x.png', style: { width: 24, height: 24 } }}
         />
       )}
+      right={(
+        <ImgButton
+          buttonProps={{ style: { float: 'right', padding: '10px 12px' } }}
+          imgProps={{ src: '/profile@3x.png', style: { width: 24, height: 24 } }}
+        />
+      )}
     />
     <div style={{ paddingTop: 44 }}>
       <RoomList/>

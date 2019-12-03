@@ -7,15 +7,22 @@ export default ({
   messages
 }: {
 	messages: {
-		id: number, message: string, dateTime: moment.Moment, send?: boolean
+		id: number, message?: string, image?: any, dateTime: moment.Moment, send?: boolean
 	}[]
-}) => (
-	<Ul>
-		{ messages && messages.map(({ id, message, send }) => (
-			<ChatListItem key={`chatListItem-${id}`} send={send}>{message}</ChatListItem>
-		))}
-	</Ul>
-);
+}) => {
+	const test = React.useRef(null);
+	React.useEffect(() => {
+		test.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
+	}, [messages]);
+
+	return (
+		<Ul ref={el => test.current = el}>
+			{ messages && messages.map(({ id, message, image, send }) => (
+				<ChatListItem key={`chatListItem-${id}`} image={!!image} send={send}>{image || message}</ChatListItem>
+			))}
+		</Ul>
+	);
+}
 
 const Ul = styled.ul`
   height: calc(100% - 59px);

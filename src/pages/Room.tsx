@@ -24,6 +24,17 @@ export default ({
 
   const goBack = React.useCallback(() => history.goBack(), [history]);
 
+  const handleUploadImage = React.useCallback(({ target: { files }}) => {
+    const reader = new FileReader();
+    reader.onload = function () {
+      setMessages([
+        ...messages,
+        { id: messages.length, image: this.result, send: true }
+      ]);
+    };
+    reader.readAsDataURL(files[0]);
+  }, undefined);
+
   const handleSendMessage = React.useCallback((e) => {
     e.preventDefault();
 
@@ -48,6 +59,15 @@ export default ({
             imgProps={{ src: '/img-back@3x.png', style: { width: 24, height: 24 } }}
           />
         )}
+        right={(
+          <div style={{ float: 'right' }}>
+            <Upload onChange={handleUploadImage} />
+            <ImgButton
+              buttonProps={{ style: { padding: '10px 12px' }}}
+              imgProps={{ src: '/img-search@3x.png', style: { width: 24, height: 24 } }}
+            />
+          </div>
+        )}
       />
       <Div>
         { messages && <ChatList messages={messages} /> }
@@ -58,6 +78,15 @@ export default ({
     </>
   );
 }
+
+const Upload = ({ onChange }) => (
+  <div style={{ display: 'inline-block' }}>
+    <label htmlFor="ex_file">
+      <img src="/img-upload@3x.png" alt="upload.png" style={{ cursor: 'pointer', width: 24, height: 24 }} />
+    </label>
+    <input type="file" id="ex_file" onChange={onChange} accept="image/*" style={{ display: 'none' }} />
+  </div>
+);
 
 const Div = styled.div`
   padding: 64px 16px 20px;

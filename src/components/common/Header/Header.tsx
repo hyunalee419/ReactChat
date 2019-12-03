@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import ImgButton from 'components/common/ImgButton';
 
 export default ({
   title,
@@ -10,10 +9,7 @@ export default ({
   <StyledDiv>
     {left}
     {title}
-    <ImgButton
-      buttonProps={{ style: { float: 'right', padding: '10px 12px' } }}
-      imgProps={{ src: '/profile@3x.png', style: { width: 24, height: 24 } }}
-    />
+    {right}
   </StyledDiv>
 );
 

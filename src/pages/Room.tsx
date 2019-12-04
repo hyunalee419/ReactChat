@@ -40,6 +40,23 @@ export default ({
     ]);
   }, undefined);
 
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData('mcEventData');
+
+    e.dataTransfer.clearData();
+
+    setMessages([
+      ...messages,
+      { id: messages.length, image: data, send: true }
+    ]);
+  }
+
+  const allowDrop = (e) => {
+    e.preventDefault();
+  }
+
   if ( !messages ) return null;
   return (
     <>
@@ -65,7 +82,7 @@ export default ({
         )}
       />
       { isImages && <UploadImageList /> }
-      <Div className={ isImages ? 'is-image' : '' }>
+      <Div onDrop={handleDrop} onDragOver={allowDrop} className={ isImages ? 'is-image' : '' }>
         { messages && <ChatList messages={messages} /> }
         <MessageContainer
           onSubmit={handleSendMessage}

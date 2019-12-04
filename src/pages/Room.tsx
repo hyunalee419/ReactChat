@@ -38,6 +38,7 @@ export default ({
       ...messages,
       { id: messages.length, message: message.value, send: true }
     ]);
+    e.target.reset();
   }, undefined);
 
 
@@ -51,11 +52,11 @@ export default ({
       ...messages,
       { id: messages.length, image: data, send: true }
     ]);
-  }
+  };
 
   const allowDrop = (e) => {
     e.preventDefault();
-  }
+  };
 
   if ( !messages ) return null;
   return (
@@ -81,7 +82,9 @@ export default ({
           </div>
         )}
       />
+
       { isImages && <UploadImageList /> }
+
       <Div onDrop={handleDrop} onDragOver={allowDrop} className={ isImages ? 'is-image' : '' }>
         { messages && <ChatList messages={messages} /> }
         <MessageContainer

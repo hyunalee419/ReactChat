@@ -13,7 +13,7 @@ export default ({
 }) => {
   const [ title, setTitle ] = React.useState(null);
   const [ messages, setMessages ] = React.useState(null);
-  const [ images, setImages ] = React.useState(null);
+  const [ isImages, setIsImages ] = React.useState(false);
 
   const isFirst = React.useRef(true);
   React.useEffect(() => {
@@ -26,16 +26,8 @@ export default ({
 
   const goBack = React.useCallback(() => history.goBack(), [history]);
 
-  const handleUploadImage = React.useCallback(({ target: { files }}) => {
-    const reader = new FileReader();
-    reader.onload = function () {
-      setMessages([
-        ...messages,
-        { id: messages.length, image: this.result, send: true }
-      ]);
-      setImages(images ? [...images, this.result] : [this.result]);
-    };
-    reader.readAsDataURL(files[0]);
+  const handleUploadImage = React.useCallback(({ target: { checked }}) => {
+    setIsImages(checked);
   }, undefined);
 
   const handleSendMessage = React.useCallback((e) => {
@@ -64,7 +56,7 @@ export default ({
         )}
         right={(
           <div style={{ float: 'right' }}>
-            <Upload onChange={handleUploadImage} />
+            <Upload value={isImages} onChange={handleUploadImage} />
             <ImgButton
               buttonProps={{ style: { padding: '10px 12px' }}}
               imgProps={{ src: '/img-search@3x.png', style: { width: 24, height: 24 } }}
@@ -72,8 +64,8 @@ export default ({
           </div>
         )}
       />
-      { images && <UploadImageList images={images} /> }
-      <Div className={ images ? 'upload-image' : ''}>
+      { isImages && <UploadImageList /> }
+      <Div className={ isImages ? 'is-image' : '' }>
         { messages && <ChatList messages={messages} /> }
         <MessageContainer
           onSubmit={handleSendMessage}
@@ -83,12 +75,12 @@ export default ({
   );
 }
 
-const Upload = ({ onChange }) => (
+const Upload = ({ value, onChange }) => (
   <div style={{ display: 'inline-block' }}>
-    <label htmlFor="ex_file">
+    <label htmlFor="uploadBtn">
       <img src="/img-upload@3x.png" alt="upload.png" style={{ cursor: 'pointer', width: 24, height: 24 }} />
     </label>
-    <input type="file" id="ex_file" onChange={onChange} accept="image/*" style={{ display: 'none' }} />
+    <input type="checkbox" id="uploadBtn" value={value} onChange={onChange} style={{ display: 'none' }} />
   </div>
 );
 
@@ -97,7 +89,7 @@ const Div = styled.div`
   height: calc(100% - 84px);
   background-color: #f9f9fb;
   
-  &.upload-image {
+  &.is-image {
     padding-top: 128px;
     height: calc(100% - 148px);
   }

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-export default ({ images }) => (
+export default ( ) => (
 	<Div>
 		<Ul>
-		{ images && images.map((src, i) => (
-			<li><Img src={src} alt={src} key={`upload-image-${i}`} /></li>
-		))}
+			<li><Img src="/uploads/2019-08-13-4-57-53@3x.png" /></li>
+			<li><Img src="/uploads/2019-08-13-4-57-56@3x.png" /></li>
+			<li><Img src="/uploads/img-shot-1@3x.png" /></li>
 		</Ul>
 	</Div>
 );

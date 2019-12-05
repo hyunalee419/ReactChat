@@ -15,10 +15,10 @@ export default ({
   const [ messages, setMessages ] = React.useState(null);
   const [ isImages, setIsImages ] = React.useState(false);
 
-  const isFirst = React.useRef(true);
+  const currID = React.useRef(null);
   React.useEffect(() => {
-    if (!isFirst.current) return;
-    isFirst.current = false;
+    if (currID.current === id) return;
+    currID.current = id;
 
     setTitle(RoomMock[id].username);
     setMessages(RoomMock[id].messages);

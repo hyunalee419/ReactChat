@@ -20,9 +20,11 @@ export default () => {
           transform: `translateX(${styles.offset}%)`,
           height: `${styles.height}%`
         })}
-        wrapperComponent={({ children, ...props }) => {
-          return <div className="asdfasdfasdf" {...props}>{children}</div>
-        }}
+        wrapperComponent={({ children, ...props }) => (
+          <div {...props}>{children}</div>
+        )}
+        runOnMount={false}
+        className="animated-route-root"
       />
     </BrowserRouter>
   );

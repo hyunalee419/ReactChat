@@ -39,6 +39,13 @@ export default [{
 	username: '구찬성 지배인',
 	messages: [{
 		id: 0,
+		message: '아 휴가셨군요. 약속은 다음으로 미루시죠!',
+		dateTime: moment().subtract(2, 'day').hours(12).toISOString()
+	}]
+}, {
+	username: '노준석 총지배인',
+	messages: [{
+		id: 0,
 		message: '휴가에서 언제 돌아오시는지요. 돌아오시면 일이 산더밉니다.',
 		dateTime: moment().subtract(3, 'day').toISOString()
 	}]

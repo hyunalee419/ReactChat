@@ -12,7 +12,8 @@ export default ({
 }) => {
 	const test = React.useRef(null);
 	React.useEffect(() => {
-		test.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
+		const { children } = test.current;
+		children[children.length - 1].scrollIntoView({ block: "start", behavior: "smooth" });
 	}, [messages]);
 
 	return (

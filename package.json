@@ -10,9 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hyunalee419/webpack-IE-polyfill.git"
+    "url": "git+https://github.com/hyunalee419/ReactChat.git"
   },
-  "homepage": "https://github.com/hyunalee419/webpack-IE-polyfill#readme",
+  "homepage": "https://github.com/hyunalee419/ReactChat#readme",
   "dependencies": {
     "@babel/core": "7.4.4",
     "@babel/node": "7.7.4",
@@ -30,6 +30,7 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-router-dom": "5.1.2",
+    "react-router-transition": "2.0.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
     "styled-components": "4.4.1",

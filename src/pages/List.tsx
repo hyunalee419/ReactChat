@@ -4,7 +4,7 @@ import RoomList from 'containers/list/RoomList';
 import ImgButton from 'components/common/ImgButton';
 
 export default () => (
-  <>
+  <div className="room-list">
     <Header
       title="채팅"
       left={(
@@ -23,5 +23,5 @@ export default () => (
     <div style={{ paddingTop: 44 }}>
       <RoomList/>
     </div>
-  </>
+  </div>
 );

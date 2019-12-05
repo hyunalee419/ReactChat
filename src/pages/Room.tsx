@@ -20,6 +20,7 @@ export default ({
     if (currID.current === id) return;
     currID.current = id;
 
+    setIsImages(false);
     setTitle(RoomMock[id].username);
     setMessages(RoomMock[id].messages);
   });

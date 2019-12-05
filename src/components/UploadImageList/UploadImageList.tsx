@@ -7,7 +7,7 @@ export default () => {
 			'mcEventData',
 			e.target.src
 		);
-	}
+	};
 
 	return (
 		<Div>
@@ -15,6 +15,10 @@ export default () => {
 				<li><Img src="/uploads/2019-08-13-4-57-53@3x.png" draggable={true} onDragStart={handleDrag} /></li>
 				<li><Img src="/uploads/2019-08-13-4-57-56@3x.png" draggable={true} onDragStart={handleDrag} /></li>
 				<li><Img src="/uploads/img-shot-1@3x.png" draggable={true} onDragStart={handleDrag} /></li>
+				<li><Img src="/uploads/img-shot-2@3x.png" draggable={true} onDragStart={handleDrag} /></li>
+				<li><Img src="/uploads/img-shot-3@3x.png" draggable={true} onDragStart={handleDrag} /></li>
+				<li><Img src="/uploads/img-shot-4@3x.png" draggable={true} onDragStart={handleDrag} /></li>
+				<li><Img src="/uploads/img-shot-5@3x.png" draggable={true} onDragStart={handleDrag} /></li>
 			</Ul>
 		</Div>
 	);

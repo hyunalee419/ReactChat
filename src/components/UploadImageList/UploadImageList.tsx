@@ -31,6 +31,7 @@ const Div = styled.div`
 	width: calc(100% - 32px);
 	height: 46px;
 	overflow-x: scroll;
+	overflow-y: hidden;
 	background-color: var(--color-purple);
 `;
 

@@ -21,3 +21,7 @@ export default () => (
       />
   </BrowserRouter>
 );
+
+const Home = () => (
+  <Link to="/list">채팅 목록 페이지</Link>
+);

@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import RoomListItem from 'components/RoomListItem';
 import RoomList from '../../../samples/list.js';
 
-const StyledUl = styled.ul`
-	padding-top: 10px;
-`;
-
 export default () => {
 	const [ rooms, setRooms ] = React.useState(null);
 
@@ -18,12 +14,16 @@ export default () => {
 	});
 
 	return (
-		<StyledUl>
+		<Ul>
 			{
 				rooms && rooms.map((item) => (
 					<RoomListItem key={item.id} {...item} />
 				))
 			}
-		</StyledUl>
+		</Ul>
 	);
 }
+
+const Ul = styled.ul`
+	padding-top: 10px;
+`;

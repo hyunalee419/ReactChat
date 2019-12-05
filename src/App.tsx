@@ -3,24 +3,30 @@ import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { AnimatedRoute } from 'react-router-transition';
 import List from 'pages/List';
 import Room from 'pages/Room';
+import './App.scss';
 
-export default () => (
-  <BrowserRouter>
+export default () => {
+  return (
+    <BrowserRouter>
       <Route exact path="/" component={Home} />
       <Route exact path="/list" component={List} />
-      {/*<Route exact path="/room/:id" component={Room} />*/}
       <AnimatedRoute
         path="/room/:id"
         component={Room}
-        atEnter={{ offset: 100 }}
-        atLeave={{ offset: 100 }}
-        atActive={{ offset: 0 }}
+        atEnter={{ offset: 100, height: 0 }}
+        atLeave={{ offset: 100, height: 0 }}
+        atActive={{ offset: 0, height: 100 }}
         mapStyles={(styles) => ({
           transform: `translateX(${styles.offset}%)`,
+          height: `${styles.height}%`
         })}
+        wrapperComponent={({ children, ...props }) => {
+          return <div className="asdfasdfasdf" {...props}>{children}</div>
+        }}
       />
-  </BrowserRouter>
-);
+    </BrowserRouter>
+  );
+}
 
 const Home = () => (
   <Link to="/list">채팅 목록 페이지</Link>
